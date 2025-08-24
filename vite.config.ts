@@ -7,13 +7,4 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
-  server: {
-    proxy: {
-      '/api': {
-        target: 'https://backend.phrase-of-the-day.com',
-        changeOrigin: true,
-        secure: true,
-      },
-    },
-  },
 });

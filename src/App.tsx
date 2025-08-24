@@ -8,7 +8,6 @@ import { QuizPage } from './pages/QuizPage';
 import { CompletionPage } from './pages/CompletionPage';
 import { SponsorPopup } from './components/SponsorPopup';
 import { useSponsorPopup } from './hooks/useSponsorPopup';
-import { DebugInfo } from './components/DebugInfo';
 import type { Phrase, PhraseData } from './types/phrase';
 
 // Import the phrase data
@@ -33,7 +32,7 @@ const AppContent: React.FC = () => {
     
     try {
       const response = await fetch(
-        `/api/v1/phrases?level=${level}`,
+        `https://backend.phrase-of-the-day.com/api/v1/phrases?level=${level}`,
         {
           method: 'GET',
           headers: {
@@ -196,9 +195,6 @@ const AppContent: React.FC = () => {
           onClose={closeSponsorPopup}
         />
       )}
-      
-      {/* Debug Info - Remove this in production */}
-      <DebugInfo />
     </div>
   );
 };
