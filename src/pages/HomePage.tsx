@@ -3,6 +3,7 @@ import { ArrowRight, Calendar, Flame, Clock, X } from 'lucide-react';
 import { AudioButton } from '../components/AudioButton';
 import { useAudio } from '../hooks/useAudio';
 import { useLanguage } from '../contexts/LanguageContext';
+import { usePageTracking } from '../hooks/useAnalytics';
 import type { Phrase } from '../types/phrase';
 
 interface HomePageProps {
@@ -15,6 +16,9 @@ export const HomePage: React.FC<HomePageProps> = ({ phrase, onNext, error }) => 
   const { playText, isPlaying } = useAudio();
   const { language, t } = useLanguage();
   const [showError, setShowError] = React.useState(true);
+  
+  // Track page view
+  usePageTracking('Home Page');
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-400 via-orange-500 to-red-500 flex items-center justify-center p-4 pt-20">

@@ -3,6 +3,7 @@ import { ArrowRight, Globe } from 'lucide-react';
 import { RegionBadge } from '../components/RegionBadge';
 import { ProgressBar } from '../components/ProgressBar';
 import { useLanguage } from '../contexts/LanguageContext';
+import { usePageTracking } from '../hooks/useAnalytics';
 import type { Phrase } from '../types/phrase';
 
 interface RegionsPageProps {
@@ -20,8 +21,11 @@ export const RegionsPage: React.FC<RegionsPageProps> = ({
 }) => {
   const { t } = useLanguage();
   
+  // Track page view
+  usePageTracking('Regions Page');
+  
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-600 p-4 pt-20">
+    <div className="min-h-screen bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-600 p-4 pt-[100px]">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
           <div className="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -30,9 +34,8 @@ export const RegionsPage: React.FC<RegionsPageProps> = ({
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
             {t('regions.title')}
           </h1>
-          <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-            {t('regions.subtitle', { phrase: phrase.phrase }).replace('is used differently across Spanish-speaking regions', t('regions.subtitle').replace('{phrase}', ''))}{' '}
-            <strong>"{phrase.phrase}"</strong> {t('regions.subtitle').replace('The phrase "{phrase}" ', '')}
+          <p className="text-3xl text-blue-100 max-w-2xl mx-auto">
+            <strong>{phrase.phrase}</strong>
           </p>
         </div>
         

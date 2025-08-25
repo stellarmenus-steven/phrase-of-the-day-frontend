@@ -4,6 +4,7 @@ import { ProgressBar } from '../components/ProgressBar';
 import { AudioButton } from '../components/AudioButton';
 import { useAudio } from '../hooks/useAudio';
 import { useLanguage } from '../contexts/LanguageContext';
+import { usePageTracking, useAnalytics } from '../hooks/useAnalytics';
 import type { Phrase } from '../types/phrase';
 
 interface QuizPageProps {
@@ -21,8 +22,12 @@ export const QuizPage: React.FC<QuizPageProps> = ({
 }) => {
   const { playText, isPlaying } = useAudio();
   const { language, t } = useLanguage();
+  const { trackQuizEvent } = useAnalytics();
   const [selectedAnswers, setSelectedAnswers] = useState<number[]>([]);
   const [showResults, setShowResults] = useState(false);
+  
+  // Track page view
+  usePageTracking('Quiz Page');
   
   // Shuffle function
   const shuffleArray = <T,>(array: T[]): T[] => {
@@ -95,6 +100,8 @@ export const QuizPage: React.FC<QuizPageProps> = ({
 
   const handleSubmit = () => {
     setShowResults(true);
+    const score = getScore();
+    trackQuizEvent('quiz_completed', score);
   };
 
   const getScore = () => {

@@ -3,6 +3,7 @@ import { Calendar, Trophy, Repeat } from 'lucide-react';
 import { AudioButton } from '../components/AudioButton';
 import { useAudio } from '../hooks/useAudio';
 import { useLanguage } from '../contexts/LanguageContext';
+import { usePageTracking, useAnalytics } from '../hooks/useAnalytics';
 import type { Phrase } from '../types/phrase';
 
 interface CompletionPageProps {
@@ -12,6 +13,10 @@ interface CompletionPageProps {
 export const CompletionPage: React.FC<CompletionPageProps> = ({ phrase }) => {
   const { playText, isPlaying } = useAudio();
   const { language, t } = useLanguage();
+  const { trackPhraseEvent } = useAnalytics();
+  
+  // Track page view
+  usePageTracking('Completion Page');
   
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);

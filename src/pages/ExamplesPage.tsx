@@ -3,6 +3,7 @@ import { ArrowRight, MessageCircle } from 'lucide-react';
 import { ExampleCard } from '../components/ExampleCard';
 import { ProgressBar } from '../components/ProgressBar';
 import { useLanguage } from '../contexts/LanguageContext';
+import { usePageTracking } from '../hooks/useAnalytics';
 import type { Phrase } from '../types/phrase';
 
 interface ExamplesPageProps {
@@ -19,6 +20,9 @@ export const ExamplesPage: React.FC<ExamplesPageProps> = ({
   totalSteps,
 }) => {
   const { t } = useLanguage();
+  
+  // Track page view
+  usePageTracking('Examples Page');
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-500 via-green-600 to-emerald-600 p-4 pt-[100px]">

@@ -8,6 +8,7 @@ import { QuizPage } from './pages/QuizPage';
 import { CompletionPage } from './pages/CompletionPage';
 import { SponsorPopup } from './components/SponsorPopup';
 import { useSponsorPopup } from './hooks/useSponsorPopup';
+import { useAnalytics } from './hooks/useAnalytics';
 import type { Phrase, PhraseData } from './types/phrase';
 
 // Import the phrase data
@@ -22,6 +23,7 @@ const AppContent: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const { t, learningLevel } = useLanguage();
+  const { trackNavigation, trackPhraseEvent } = useAnalytics();
 
   const { isVisible, closeSponsorPopup, resetSponsor } = useSponsorPopup(phraseData?.sponsor);
 
@@ -92,18 +94,23 @@ const AppContent: React.FC = () => {
   };
 
   const handleNext = () => {
+    const previousPage = currentPage;
     switch (currentPage) {
       case 'home':
         setCurrentPage('examples');
+        trackNavigation('home', 'examples');
         break;
       case 'examples':
         setCurrentPage('quiz');
+        trackNavigation('examples', 'quiz');
         break;
       case 'quiz':
         setCurrentPage('regions');
+        trackNavigation('quiz', 'regions');
         break;
       case 'regions':
         setCurrentPage('completion');
+        trackNavigation('regions', 'completion');
         break;
     }
   };
@@ -111,6 +118,7 @@ const AppContent: React.FC = () => {
   const handleRestart = () => {
     setCurrentPage('home');
     resetSponsor();
+    trackNavigation('completion', 'home');
   };
 
   const handleRetry = () => {
