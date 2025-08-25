@@ -37,11 +37,6 @@ export const ExampleCard: React.FC<ExampleCardProps> = ({ example, index }) => {
           </p>
         </div>
         
-        <div className="pt-2 border-t border-gray-100">
-          <span className="text-sm text-gray-500 italic">
-            {t('examples.context')}: {example.context[language]}
-          </span>
-        </div>
       </div>
     </div>
   );

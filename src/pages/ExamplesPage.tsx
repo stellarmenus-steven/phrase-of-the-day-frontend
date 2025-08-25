@@ -30,8 +30,8 @@ export const ExamplesPage: React.FC<ExamplesPageProps> = ({
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
             {t('examples.title')}
           </h1>
-          <p className="text-xl text-green-100 max-w-2xl mx-auto">
-            <strong>"{phrase.phrase}"</strong>
+          <p className="text-3xl text-green-100 max-w-2xl mx-auto">
+            <strong>{phrase.phrase}</strong>
           </p>
         </div>
 
