@@ -19,7 +19,10 @@ export const ExamplesPage: React.FC<ExamplesPageProps> = ({
   totalSteps,
 }) => {
   const { t } = useLanguage();
-  
+
+  // Precompute the suffix once (avoids repeating "is used in everyday conversations")
+  const suffix = t('examples.subtitle', { phrase: '' });
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-500 via-green-600 to-emerald-600 p-4 pt-[100px]">
       <div className="max-w-4xl mx-auto">
@@ -31,21 +34,18 @@ export const ExamplesPage: React.FC<ExamplesPageProps> = ({
             {t('examples.title')}
           </h1>
           <p className="text-xl text-green-100 max-w-2xl mx-auto">
-            {t('examples.subtitle', { phrase: phrase.phrase }).replace('is used in everyday conversations', t('examples.subtitle').replace('{phrase}', ''))}{' '}
-            <strong>"{phrase.phrase}"</strong> {t('examples.subtitle').replace('See how "{phrase}" ', '')}
+            {t('examples.subtitle', { phrase: phrase.phrase }).replace(suffix, '')}{' '}
+            <strong>"{phrase.phrase}"</strong>{' '}
+            {suffix.trim()}
           </p>
         </div>
-        
+
         <div className="grid gap-6 mb-8">
           {phrase.examples.map((example, index) => (
-            <ExampleCard
-              key={index}
-              example={example}
-              index={index}
-            />
+            <ExampleCard key={index} example={example} index={index} />
           ))}
         </div>
-        
+
         <div className="bg-white rounded-xl p-8 shadow-lg mb-8">
           <h3 className="text-xl font-semibold text-gray-800 mb-4">
             {t('examples.similarPhrases')}
@@ -61,7 +61,7 @@ export const ExamplesPage: React.FC<ExamplesPageProps> = ({
             ))}
           </div>
         </div>
-        
+
         <div className="text-center">
           <button
             onClick={onNext}
@@ -73,7 +73,7 @@ export const ExamplesPage: React.FC<ExamplesPageProps> = ({
             <ArrowRight className="w-6 h-6" />
           </button>
         </div>
-        
+
         <ProgressBar currentStep={currentStep} totalSteps={totalSteps} />
       </div>
     </div>

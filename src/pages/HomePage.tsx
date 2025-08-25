@@ -81,9 +81,6 @@ export const HomePage: React.FC<HomePageProps> = ({ phrase, onNext, error }) => 
           <ArrowRight className="w-6 h-6" />
         </button>
         
-        <p className="text-white/80 mt-6 text-lg">
-          {t('home.masterPhrase')}
-        </p>
       </div>
     </div>
   );
