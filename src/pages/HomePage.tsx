@@ -41,7 +41,6 @@ export const HomePage: React.FC<HomePageProps> = ({ phrase, onNext, error }) => 
       
       <div className="max-w-2xl mx-auto text-center">
         <div className="bg-white/10 backdrop-blur-sm rounded-full px-6 py-2 mb-4 inline-flex items-center space-x-2">
-          <Clock className="w-5 h-5 text-white" />
           <span className="text-white font-medium text-lg">{phrase.date.spanish}</span>
         </div>
         
@@ -64,7 +63,7 @@ export const HomePage: React.FC<HomePageProps> = ({ phrase, onNext, error }) => 
             </div>
           </div>
           
-          <div className="bg-blue-50 rounded-xl p-6 mb-6">
+          <div className="bg-blue-50 rounded-xl p-4 mb-1">
             <h2 className="text-2xl font-bold text-blue-800 mb-2">
               {phrase.meaning[language]}
             </h2>
