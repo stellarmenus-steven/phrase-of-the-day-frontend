@@ -58,8 +58,8 @@ export const HomePage: React.FC<HomePageProps> = ({ phrase, onNext, error }) => 
               <h1 className="text-3xl md:text-5xl font-bold text-gray-800 mb-2">
                 {phrase.phrase}
               </h1>
-              <p className="text-lg text-gray-600 italic">
-                /{phrase.pronunciation}/
+              <p className="text-lg text-gray-600">
+                {phrase.pronunciation}
               </p>
             </div>
           </div>
