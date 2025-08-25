@@ -11,8 +11,6 @@ export const useAudio = () => {
       audioRef.current.currentTime = 0;
     }
 
-    console.log('Attempting to play audio:', audioUrl);
-
     // Create new audio element
     const audio = new Audio(audioUrl);
     audioRef.current = audio;
@@ -20,24 +18,15 @@ export const useAudio = () => {
     setIsPlaying(true);
     
     audio.onended = () => {
-      console.log('Audio playback ended:', audioUrl);
       setIsPlaying(false);
     };
     
     audio.onerror = (error) => {
       console.error('Audio error:', error);
-      console.error('Failed to load audio URL:', audioUrl);
       setIsPlaying(false);
-      
-      // Log additional error details
-      if (audio.error) {
-        console.error('Audio error code:', audio.error.code);
-        console.error('Audio error message:', audio.error.message);
-      }
       
       // Fallback to text-to-speech if available
       if (fallbackText) {
-        console.log('Falling back to text-to-speech for:', fallbackText);
         setTimeout(() => {
           // Use speech synthesis directly to avoid circular dependency
           if ('speechSynthesis' in window) {
@@ -52,22 +41,12 @@ export const useAudio = () => {
       }
     };
     
-    audio.onloadstart = () => {
-      console.log('Audio loading started:', audioUrl);
-    };
-    
-    audio.oncanplay = () => {
-      console.log('Audio can play:', audioUrl);
-    };
-    
     audio.play().catch((error) => {
       console.error('Error playing audio:', error);
-      console.error('Audio URL that failed:', audioUrl);
       setIsPlaying(false);
       
       // Fallback to text-to-speech if available
       if (fallbackText) {
-        console.log('Falling back to text-to-speech for:', fallbackText);
         setTimeout(() => {
           // Use speech synthesis directly to avoid circular dependency
           if ('speechSynthesis' in window) {
