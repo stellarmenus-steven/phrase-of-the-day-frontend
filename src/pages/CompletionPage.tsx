@@ -22,7 +22,7 @@ export const CompletionPage: React.FC<CompletionPageProps> = ({ phrase }) => {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-yellow-400 via-orange-400 to-red-400 flex items-center justify-center p-4 pt-20">
+    <div className="min-h-screen bg-gradient-to-br from-orange-400 via-orange-500 to-red-500 flex items-center justify-center p-4 pt-4 md:pt-20">
       <div className="max-w-2xl mx-auto text-center">
         <div className="bg-white/10 backdrop-blur-sm rounded-full px-6 py-2 mb-8 inline-flex items-center space-x-2">
           <Trophy className="w-5 h-5 text-yellow-300" />

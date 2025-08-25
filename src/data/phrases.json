@@ -78,6 +78,7 @@
     }
   ],
   "sponsor": {
+    "show": false,
     "show_after": 15,
     "headline": {
       "en": "Today's Phrase is Sponsored by Hispa Nacho",

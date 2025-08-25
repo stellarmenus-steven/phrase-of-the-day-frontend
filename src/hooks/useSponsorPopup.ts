@@ -6,7 +6,7 @@ export const useSponsorPopup = (sponsor?: Sponsor) => {
   const [hasShown, setHasShown] = useState(false);
 
   useEffect(() => {
-    if (!sponsor || hasShown) return;
+    if (!sponsor || hasShown || !sponsor.show) return;
 
     const timer = setTimeout(() => {
       setIsVisible(true);

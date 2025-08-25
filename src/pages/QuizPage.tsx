@@ -107,7 +107,7 @@ export const QuizPage: React.FC<QuizPageProps> = ({
   const score = showResults ? getScore() : 0;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-500 via-purple-600 to-pink-600 p-4 pt-20">
+    <div className="min-h-screen bg-gradient-to-br from-purple-500 via-purple-600 to-pink-600 p-4 pt-[100px]">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
           <div className="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">

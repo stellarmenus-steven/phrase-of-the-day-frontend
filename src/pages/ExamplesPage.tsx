@@ -21,7 +21,7 @@ export const ExamplesPage: React.FC<ExamplesPageProps> = ({
   const { t } = useLanguage();
   
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-500 via-green-600 to-emerald-600 p-4 pt-20">
+    <div className="min-h-screen bg-gradient-to-br from-green-500 via-green-600 to-emerald-600 p-4 pt-[100px]">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
           <div className="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">

@@ -49,6 +49,7 @@ export interface Phrase {
 }
 
 export interface Sponsor {
+  show: boolean;
   show_after: number;
   headline: {
     en: string;
