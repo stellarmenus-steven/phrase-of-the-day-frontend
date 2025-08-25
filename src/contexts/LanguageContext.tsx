@@ -37,7 +37,7 @@ const translations = {
     'regions.seeExamples': 'Continue',
     
     // Examples Page
-    'examples.title': 'Real-Life Examples',
+    'examples.title': 'Everyday Conversations',
     'examples.subtitle': 'is used in everyday conversations',
     'examples.example': 'Example',
     'examples.context': 'Context',
@@ -113,7 +113,7 @@ const translations = {
     'regions.seeExamples': 'Continuar',
     
     // Examples Page
-    'examples.title': 'Ejemplos de la Vida Real',
+    'examples.title': 'Conversaciones cotidianas',
     'examples.subtitle': 'se usa en conversaciones cotidianas',
     'examples.example': 'Ejemplo',
     'examples.context': 'Contexto',

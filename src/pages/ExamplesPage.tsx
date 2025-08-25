@@ -20,9 +20,6 @@ export const ExamplesPage: React.FC<ExamplesPageProps> = ({
 }) => {
   const { t } = useLanguage();
 
-  // Precompute the suffix once (avoids repeating "is used in everyday conversations")
-  const suffix = t('examples.subtitle', { phrase: '' });
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-500 via-green-600 to-emerald-600 p-4 pt-[100px]">
       <div className="max-w-4xl mx-auto">
@@ -34,9 +31,7 @@ export const ExamplesPage: React.FC<ExamplesPageProps> = ({
             {t('examples.title')}
           </h1>
           <p className="text-xl text-green-100 max-w-2xl mx-auto">
-            {t('examples.subtitle', { phrase: phrase.phrase }).replace(suffix, '')}{' '}
-            <strong>"{phrase.phrase}"</strong>{' '}
-            {suffix.trim()}
+            <strong>"{phrase.phrase}"</strong>
           </p>
         </div>
 
