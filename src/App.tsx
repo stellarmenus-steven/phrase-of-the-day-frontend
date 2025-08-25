@@ -9,6 +9,7 @@ import { CompletionPage } from './pages/CompletionPage';
 import { SponsorPopup } from './components/SponsorPopup';
 import { useSponsorPopup } from './hooks/useSponsorPopup';
 import { useAnalytics } from './hooks/useAnalytics';
+import { AudioDiagnostic } from './components/AudioDiagnostic';
 import type { Phrase, PhraseData } from './types/phrase';
 
 // Import the phrase data
@@ -203,6 +204,9 @@ const AppContent: React.FC = () => {
           onClose={closeSponsorPopup}
         />
       )}
+      
+      {/* Audio Diagnostic - Remove in production */}
+      <AudioDiagnostic />
     </div>
   );
 };

@@ -25,7 +25,7 @@ export const ExampleCard: React.FC<ExampleCardProps> = ({ example, index }) => {
           isPlaying={isPlaying}
           onPlay={(audioUrl, text) => {
             if (audioUrl) {
-              playAudio(audioUrl);
+              playAudio(audioUrl, text);
             } else if (text) {
               playText(text);
             }

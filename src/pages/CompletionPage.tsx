@@ -49,7 +49,7 @@ export const CompletionPage: React.FC<CompletionPageProps> = ({ phrase }) => {
                 isPlaying={isPlaying}
                 onPlay={(audioUrl, text) => {
                   if (audioUrl) {
-                    playAudio(audioUrl);
+                    playAudio(audioUrl, text);
                   } else if (text) {
                     playText(text);
                   }

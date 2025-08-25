@@ -54,7 +54,7 @@ export const HomePage: React.FC<HomePageProps> = ({ phrase, onNext, error }) => 
               isPlaying={isPlaying}
               onPlay={(audioUrl, text) => {
                 if (audioUrl) {
-                  playAudio(audioUrl);
+                  playAudio(audioUrl, text);
                 } else if (text) {
                   playText(text);
                 }
