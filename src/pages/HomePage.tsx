@@ -72,15 +72,6 @@ export const HomePage: React.FC<HomePageProps> = ({ phrase, onNext, error }) => 
               {phrase.context[language]}
             </p>
           </div>
-          
-          <div className="flex items-center justify-center space-x-2 text-sm text-gray-600 mb-6">
-            <span className="bg-gray-100 px-3 py-1 rounded-full capitalize">
-              {t(phrase.formality)}
-            </span>
-            <span className="bg-gray-100 px-3 py-1 rounded-full capitalize">
-              {t(phrase.difficulty)}
-            </span>
-          </div>
         </div>
         
         <button
