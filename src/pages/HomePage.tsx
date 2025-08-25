@@ -40,9 +40,7 @@ export const HomePage: React.FC<HomePageProps> = ({ phrase, onNext, error }) => 
       )}
       
       <div className="max-w-2xl mx-auto text-center">
-        <div className="bg-white/10 backdrop-blur-sm rounded-full px-6 py-2 mb-4 inline-flex items-center space-x-2">
-          <span className="text-white font-medium text-lg">{phrase.date.spanish}</span>
-        </div>
+
         
         <div className="bg-white rounded-3xl p-8 shadow-2xl mb-8 transform hover:scale-105 transition-all duration-300">
         <div className="flex flex-col items-center text-center mb-6 md:flex-row md:items-center md:text-left">
