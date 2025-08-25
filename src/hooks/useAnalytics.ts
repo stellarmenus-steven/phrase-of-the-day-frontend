@@ -1,12 +1,17 @@
 import { useEffect } from 'react';
 
-// Extend the global window object to include gtag
+// Extend the global window object to include gtag and clarity
 declare global {
   interface Window {
     gtag: (
       command: 'config' | 'event' | 'js',
       targetId: string,
       config?: Record<string, any>
+    ) => void;
+    clarity: (
+      command: 'event',
+      eventName: string,
+      parameters?: Record<string, any>
     ) => void;
   }
 }
@@ -22,19 +27,37 @@ export const useAnalytics = () => {
     }
   };
 
-  // Track custom events
+  // Track custom events with enhanced parameters
   const trackEvent = (
     action: string,
     category: string,
     label?: string,
-    value?: number
+    value?: number,
+    customParameters?: Record<string, any>
   ) => {
     if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', action, {
+      const eventConfig: Record<string, any> = {
         event_category: category,
         event_label: label,
         value: value,
-      });
+      };
+
+      // Add custom parameters if provided
+      if (customParameters) {
+        Object.assign(eventConfig, customParameters);
+      }
+
+      window.gtag('event', action, eventConfig);
+    }
+
+    // Also track in Microsoft Clarity
+    if (typeof window !== 'undefined' && window.clarity) {
+      const clarityParams = customParameters || {};
+      if (label) clarityParams.label = label;
+      if (value) clarityParams.value = value;
+      if (category) clarityParams.category = category;
+      
+      window.clarity('event', action, clarityParams);
     }
   };
 
@@ -53,12 +76,24 @@ export const useAnalytics = () => {
     trackEvent('page_navigation', 'navigation', `${fromPage}_to_${toPage}`);
   };
 
+  // Enhanced welcome flow tracking
+  const trackWelcomeEvent = (eventName: string, parameters?: Record<string, any>) => {
+    trackEvent(
+      eventName, 
+      'welcome_flow', 
+      parameters?.label || eventName, 
+      parameters?.value || 1,
+      parameters
+    );
+  };
+
   return {
     trackPageView,
     trackEvent,
     trackPhraseEvent,
     trackQuizEvent,
     trackNavigation,
+    trackWelcomeEvent,
   };
 };
 

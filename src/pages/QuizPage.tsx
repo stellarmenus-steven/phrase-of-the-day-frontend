@@ -40,6 +40,27 @@ export const QuizPage: React.FC<QuizPageProps> = ({
   };
 
   const questions = useMemo(() => {
+    // Use quiz data from JSON if available, otherwise fall back to hardcoded questions
+    if (phrase.quiz && phrase.quiz.questions) {
+      // Randomize the order of questions
+      const shuffledQuestions = shuffleArray(phrase.quiz.questions);
+      
+      // For each question, randomize the options and update the correct answer index
+      return shuffledQuestions.map(question => {
+        const correctAnswer = question.options[question.correctAnswer];
+        const shuffledOptions = shuffleArray(question.options);
+        const newCorrectIndex = shuffledOptions.indexOf(correctAnswer);
+        
+        return {
+          ...question,
+          question: question.question[language === 'en' ? 'en' : 'es'],
+          options: shuffledOptions.map(option => option[language === 'en' ? 'en' : 'es']),
+          correct: newCorrectIndex
+        };
+      });
+    }
+
+    // Fallback to hardcoded questions (keeping existing logic for backward compatibility)
     const baseQuestions = [
       {
         question: t('quiz.question1', { phrase: phrase.phrase }),

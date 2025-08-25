@@ -78,6 +78,20 @@ const translations = {
     'total': 'total',
     'loading': 'Loading today\'s phrase...',
     
+    // Welcome Page
+    'welcome.title': 'Welcome to Spanish Phrase of the Day!',
+    'welcome.subtitle': 'Let\'s personalize your learning experience',
+    'welcome.languageQuestion': 'What language would you like explanations in?',
+    'welcome.levelQuestion': 'What\'s your Spanish learning level?',
+    'welcome.beginner': 'Beginner',
+    'welcome.beginnerDesc': 'Just starting out',
+    'welcome.intermediate': 'Intermediate',
+    'welcome.intermediateDesc': 'Some experience',
+    'welcome.startButton': 'Start Learning!',
+    'welcome.back.title': 'Welcome Back!',
+    'welcome.back.subtitle': 'Today\'s phrase is ready for',
+    'welcome.back.continueButton': 'Continue Learning!',
+    
     // Formality levels
     'formal': 'Formal',
     'informal': 'Informal',
@@ -153,6 +167,20 @@ const translations = {
     'step': 'Paso',
     'total': 'total',
     'loading': 'Cargando la frase de hoy...',
+    
+    // Welcome Page
+    'welcome.title': '¡Bienvenido a Frase del Día en Español!',
+    'welcome.subtitle': 'Personalicemos tu experiencia de aprendizaje',
+    'welcome.languageQuestion': '¿En qué idioma quieres las explicaciones?',
+    'welcome.levelQuestion': '¿Cuál es tu nivel de español?',
+    'welcome.beginner': 'Principiante',
+    'welcome.beginnerDesc': 'Acabas de empezar',
+    'welcome.intermediate': 'Intermedio',
+    'welcome.intermediateDesc': 'Algo de experiencia',
+    'welcome.startButton': '¡Empezar a Aprender!',
+    'welcome.back.title': '¡Bienvenido de Vuelta!',
+    'welcome.back.subtitle': 'La frase de hoy está lista para el',
+    'welcome.back.continueButton': '¡Continuar Aprendiendo!',
     
     // Formality levels
     'formal': 'Formal',

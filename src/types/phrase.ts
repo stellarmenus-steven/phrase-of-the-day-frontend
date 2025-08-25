@@ -24,6 +24,27 @@ export interface Example {
   audio: Audio;
 }
 
+export interface QuizQuestion {
+  id: number;
+  question: {
+    en: string;
+    es: string;
+  };
+  options: Array<{
+    en: string;
+    es: string;
+  }>;
+  correctAnswer: number;
+  explanation: {
+    en: string;
+    es: string;
+  };
+}
+
+export interface Quiz {
+  questions: QuizQuestion[];
+}
+
 export interface Phrase {
   id: number;
   phrase: string;
@@ -53,6 +74,7 @@ export interface Phrase {
   similarPhrases: string[];
   difficulty: 'beginner' | 'intermediate' | 'advanced';
   tags: string[];
+  quiz?: Quiz;
 }
 
 export interface Sponsor {
