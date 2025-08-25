@@ -44,7 +44,7 @@ export const HomePage: React.FC<HomePageProps> = ({ phrase, onNext, error }) => 
           <span className="text-white font-medium text-lg">{phrase.date.spanish}</span>
         </div>
         
-        <div className="bg-white rounded-3xl p-12 shadow-2xl mb-8 transform hover:scale-105 transition-all duration-300">
+        <div className="bg-white rounded-3xl p-8 shadow-2xl mb-8 transform hover:scale-105 transition-all duration-300">
         <div className="flex flex-col items-center text-center mb-6 md:flex-row md:items-center md:text-left">
           <AudioButton
               text={phrase.phrase}
