@@ -20,6 +20,7 @@ export const HomePage: React.FC<HomePageProps> = ({ phrase, onNext, error }) => 
     <div className="min-h-screen bg-gradient-to-br from-orange-400 via-orange-500 to-red-500 flex items-center justify-center p-4 pt-20">
       {/* Show error message only on home page if API call failed */}
       {error && showError && (
+        
         <div className="fixed bottom-4 left-4 right-4 z-30 max-w-md mx-auto">
           <div className="bg-yellow-100 border border-yellow-400 text-yellow-800 px-4 py-3 rounded-lg shadow-md">
             <div className="flex items-center justify-between">
@@ -45,15 +46,15 @@ export const HomePage: React.FC<HomePageProps> = ({ phrase, onNext, error }) => 
         </div>
         
         <div className="bg-white rounded-3xl p-12 shadow-2xl mb-8 transform hover:scale-105 transition-all duration-300">
-          <div className="flex items-center justify-center mb-6">
-            <AudioButton
+        <div className="flex flex-col items-center text-center mb-6 md:flex-row md:items-center md:text-left">
+          <AudioButton
               text={phrase.phrase}
               isPlaying={isPlaying}
               onPlay={playText}
               size="lg"
-              className="mr-4"
+              className="mb-4 md:mb-0 md:mr-4"
             />
-            <div className="text-left">
+            <div>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-2">
                 {phrase.phrase}
               </h1>
