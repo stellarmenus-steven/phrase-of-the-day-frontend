@@ -55,7 +55,7 @@ export const HomePage: React.FC<HomePageProps> = ({ phrase, onNext, error }) => 
               className="mb-4 md:mb-0 md:mr-4"
             />
             <div>
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-2">
+              <h1 className="text-3xl md:text-5xl font-bold text-gray-800 mb-2">
                 {phrase.phrase}
               </h1>
               <p className="text-lg text-gray-600 italic">
