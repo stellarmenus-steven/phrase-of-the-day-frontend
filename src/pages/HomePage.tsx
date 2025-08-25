@@ -13,7 +13,7 @@ interface HomePageProps {
 }
 
 export const HomePage: React.FC<HomePageProps> = ({ phrase, onNext, error }) => {
-  const { playText, isPlaying } = useAudio();
+  const { playAudio, playText, isPlaying } = useAudio();
   const { language, t } = useLanguage();
   const [showError, setShowError] = React.useState(true);
   
@@ -49,9 +49,16 @@ export const HomePage: React.FC<HomePageProps> = ({ phrase, onNext, error }) => 
         <div className="bg-white rounded-3xl p-8 shadow-2xl mb-8 transform hover:scale-105 transition-all duration-300">
         <div className="flex flex-col items-center text-center mb-6 md:flex-row md:items-center md:text-left">
           <AudioButton
+              audioUrl={phrase.audio?.url}
               text={phrase.phrase}
               isPlaying={isPlaying}
-              onPlay={playText}
+              onPlay={(audioUrl, text) => {
+                if (audioUrl) {
+                  playAudio(audioUrl);
+                } else if (text) {
+                  playText(text);
+                }
+              }}
               size="lg"
               className="mb-4 md:mb-0 md:mr-4"
             />

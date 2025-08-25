@@ -20,7 +20,7 @@ export const QuizPage: React.FC<QuizPageProps> = ({
   currentStep,
   totalSteps,
 }) => {
-  const { playText, isPlaying } = useAudio();
+  const { playAudio, playText, isPlaying } = useAudio();
   const { language, t } = useLanguage();
   const { trackQuizEvent } = useAnalytics();
   const [selectedAnswers, setSelectedAnswers] = useState<number[]>([]);

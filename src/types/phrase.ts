@@ -9,6 +9,11 @@ export interface Region {
   };
 }
 
+export interface Audio {
+  url: string;
+  format: string;
+}
+
 export interface Example {
   spanish: string;
   english: string;
@@ -16,12 +21,14 @@ export interface Example {
     en: string;
     es: string;
   };
+  audio: Audio;
 }
 
 export interface Phrase {
   id: number;
   phrase: string;
   pronunciation: string;
+  audio: Audio;
   date: {
     spanish: string;
     dayName: string;

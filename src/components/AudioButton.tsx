@@ -2,14 +2,16 @@ import React from 'react';
 import { Volume2, VolumeX } from 'lucide-react';
 
 interface AudioButtonProps {
-  text: string;
+  audioUrl?: string;
+  text?: string; // Fallback for text-to-speech
   isPlaying: boolean;
-  onPlay: (text: string) => void;
+  onPlay: (audioUrl?: string, text?: string) => void;
   className?: string;
   size?: 'sm' | 'md' | 'lg';
 }
 
 export const AudioButton: React.FC<AudioButtonProps> = ({
+  audioUrl,
   text,
   isPlaying,
   onPlay,
@@ -30,7 +32,7 @@ export const AudioButton: React.FC<AudioButtonProps> = ({
 
   return (
     <button
-      onClick={() => onPlay(text)}
+      onClick={() => onPlay(audioUrl, text)}
       className={`
         ${sizeClasses[size]}
         bg-blue-500 hover:bg-blue-600 text-white rounded-full

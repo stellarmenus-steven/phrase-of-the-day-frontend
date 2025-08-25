@@ -11,7 +11,7 @@ interface CompletionPageProps {
 }
 
 export const CompletionPage: React.FC<CompletionPageProps> = ({ phrase }) => {
-  const { playText, isPlaying } = useAudio();
+  const { playAudio, playText, isPlaying } = useAudio();
   const { language, t } = useLanguage();
   const { trackPhraseEvent } = useAnalytics();
   
@@ -27,7 +27,7 @@ export const CompletionPage: React.FC<CompletionPageProps> = ({ phrase }) => {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-400 via-orange-500 to-red-500 flex items-center justify-center p-4 pt-4 md:pt-20">
+    <div className="min-h-screen bg-gradient-to-br from-orange-400 via-orange-500 to-red-500 flex items-center justify-center p-4 pt-4 md:pt-[100px]">
       <div className="max-w-2xl mx-auto text-center">
         <div className="bg-white/10 backdrop-blur-sm rounded-full px-6 py-2 mb-8 inline-flex items-center space-x-2">
           <Trophy className="w-5 h-5 text-yellow-300" />
@@ -44,9 +44,16 @@ export const CompletionPage: React.FC<CompletionPageProps> = ({ phrase }) => {
           <div className="bg-gradient-to-r from-yellow-100 to-orange-100 rounded-xl p-6 mb-8">
             <div className="flex items-center justify-center space-x-4 mb-4">
               <AudioButton
+                audioUrl={phrase.audio?.url}
                 text={phrase.phrase}
                 isPlaying={isPlaying}
-                onPlay={playText}
+                onPlay={(audioUrl, text) => {
+                  if (audioUrl) {
+                    playAudio(audioUrl);
+                  } else if (text) {
+                    playText(text);
+                  }
+                }}
                 size="lg"
               />
               <div>

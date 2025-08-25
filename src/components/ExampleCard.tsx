@@ -10,7 +10,7 @@ interface ExampleCardProps {
 }
 
 export const ExampleCard: React.FC<ExampleCardProps> = ({ example, index }) => {
-  const { playText, isPlaying } = useAudio();
+  const { playAudio, playText, isPlaying } = useAudio();
   const { language, t } = useLanguage();
 
   return (
@@ -20,9 +20,16 @@ export const ExampleCard: React.FC<ExampleCardProps> = ({ example, index }) => {
           {t('examples.example')} {index + 1}
         </span>
         <AudioButton
+          audioUrl={example.audio?.url}
           text={example.spanish}
           isPlaying={isPlaying}
-          onPlay={playText}
+          onPlay={(audioUrl, text) => {
+            if (audioUrl) {
+              playAudio(audioUrl);
+            } else if (text) {
+              playText(text);
+            }
+          }}
           size="sm"
         />
       </div>
