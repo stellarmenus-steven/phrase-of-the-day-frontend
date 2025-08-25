@@ -120,14 +120,6 @@ export const QuizPage: React.FC<QuizPageProps> = ({
             {t('quiz.subtitle')} <strong>"{phrase.phrase}"</strong>
           </p>
           
-          <div className="flex items-center justify-center space-x-4 mb-8">
-            <AudioButton
-              text={phrase.phrase}
-              isPlaying={isPlaying}
-              onPlay={playText}
-            />
-            <span className="text-2xl font-bold text-white">{phrase.phrase}</span>
-          </div>
         </div>
         
         <div className="space-y-6 mb-8">
