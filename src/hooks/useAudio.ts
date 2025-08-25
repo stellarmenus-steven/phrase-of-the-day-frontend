@@ -39,7 +39,15 @@ export const useAudio = () => {
       if (fallbackText) {
         console.log('Falling back to text-to-speech for:', fallbackText);
         setTimeout(() => {
-          playText(fallbackText);
+          // Use speech synthesis directly to avoid circular dependency
+          if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(fallbackText);
+            utterance.lang = 'es-ES';
+            utterance.rate = 0.8;
+            utterance.pitch = 1;
+            window.speechSynthesis.speak(utterance);
+          }
         }, 100);
       }
     };
@@ -61,11 +69,19 @@ export const useAudio = () => {
       if (fallbackText) {
         console.log('Falling back to text-to-speech for:', fallbackText);
         setTimeout(() => {
-          playText(fallbackText);
+          // Use speech synthesis directly to avoid circular dependency
+          if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(fallbackText);
+            utterance.lang = 'es-ES';
+            utterance.rate = 0.8;
+            utterance.pitch = 1;
+            window.speechSynthesis.speak(utterance);
+          }
         }, 100);
       }
     });
-  }, [playText]);
+  }, []);
 
   const stopAudio = useCallback(() => {
     if (audioRef.current) {

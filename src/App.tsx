@@ -35,7 +35,7 @@ const AppContent: React.FC = () => {
     
     try {
       const response = await fetch(
-        `https://backend.phrase-of-the-day.com/api/v1/phrases?level=${level}`,
+        `/api/v1/phrases?level=${level}`,
         {
           method: 'GET',
           headers: {
