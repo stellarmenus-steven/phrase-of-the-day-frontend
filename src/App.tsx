@@ -33,8 +33,13 @@ const AppContent: React.FC = () => {
     setError(null);
     
     try {
+      // Use proxy in development, full URL in production
+      const apiUrl = import.meta.env.DEV 
+        ? `/api/v1/phrases?level=${level}`
+        : `https://backend.phrase-of-the-day.com/api/v1/phrases?level=${level}`;
+
       const response = await fetch(
-        `/api/v1/phrases?level=${level}`,
+        apiUrl,
         {
           method: 'GET',
           headers: {
